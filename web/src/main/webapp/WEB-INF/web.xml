@@ -4,95 +4,32 @@
 	<distributable />
 	<display-name>HR_MS</display-name>
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:/applicationContext.xml
-		</param-value>
-	</context-param>
-	<servlet>
-		<servlet-name>proxoolAdmin</servlet-name>
-		<servlet-class>org.logicalcobwebs.proxool.admin.servlet.AdminServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>JspSupportServlet</servlet-name>
-		<servlet-class>org.apache.struts2.views.JspSupportServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+	<!--<context-param>-->
+		<!--<param-name>contextConfigLocation</param-name>-->
+		<!--<param-value>-->
+			<!--classpath*:/spring-context.xml-->
+		<!--</param-value>-->
+	<!--</context-param>-->
 
+	<!--<listener>-->
+		<!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+	<!--</listener>-->
+
+	<!-- MVC Servlet -->
 	<servlet>
-		<servlet-name>FileUploadServlet</servlet-name>
-		<servlet-class>com.ladyalife.hr.servlet.FileUploadServlet</servlet-class>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:/spring-mvc*.xml</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>FileUploadServlet</servlet-name>
-		<url-pattern>/uploadFile</url-pattern>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>proxoolAdmin</servlet-name>
-		<url-pattern>/proxoolAdmin.svl</url-pattern>
-	</servlet-mapping>
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	<filter>
-		<filter-name>hibernateFilter</filter-name>
-		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>log4jFilter</filter-name>
-		<filter-class>com.ladyalife.hr.filter.Log4jFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>log4jFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<filter>
-		<filter-name>strutsFilter</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.jspx</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>strutsFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>strutsFilter</filter-name>
-		<url-pattern>*.jspx</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>hibernateFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>hibernateFilter</filter-name>
-		<url-pattern>*.jspx</url-pattern>
-	</filter-mapping>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-	</listener>
 	<session-config>
 		<session-timeout>1</session-timeout>
 	</session-config>
