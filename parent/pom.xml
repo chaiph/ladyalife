@@ -36,7 +36,7 @@
         <commons-email.version>1.3.3</commons-email.version>
         <commons-configuration.version>1.9</commons-configuration.version>
         <commons-net.version>3.3</commons-net.version>
-        <commons-fileupload.version>1.3</commons-fileupload.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
 
 
         <!-- Google 通用类库 -->
